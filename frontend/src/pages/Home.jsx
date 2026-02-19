@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useWorkoutsContext } from '../components/WorkoutForm'
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 
 
 // Components
@@ -32,6 +32,8 @@ const Home = () => {
                 ))
             }
       </div>
+      
+      <WorkoutForm />
     </div>
   )
 }
