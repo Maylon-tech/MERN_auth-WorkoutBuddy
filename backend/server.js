@@ -16,16 +16,16 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use("/api/workout", workoutRoutes)
+app.use("/api/workouts", workoutRoutes)
 
 // Connect to DB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         //listen for requests
-        app.listen(proces.env.PORT, () => {
+        app.listen(process.env.PORT, () => {
             console.log('connected to db & listening on port', process.env.PORT)
         })
     })
     .catch((error) => {
-        console.log("cannot do connection with DB.")
+        console.log("cannot do connection with DB.", error)
     })
