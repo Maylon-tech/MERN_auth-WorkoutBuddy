@@ -2,7 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
-import workoutRoutes from './models/workoutModel.js'
+import workoutRoutes from './routes/workouts.js'
+import userRoutes from './routes/userRoutes.js'
 
 const app = express()
 dotenv.config()
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/api/workouts", workoutRoutes)
+app.use("/api/user", userRoutes)
 
 // Connect to DB
 mongoose.connect(process.env.MONGO_URI)

@@ -5,8 +5,8 @@ import {
     createWorkout,
     getWorkouts,
     getWorkout,
-    deleteWorkout,
-    updateWorkout
+    // deleteWorkout,
+    // updateWorkout
 } from '../controllers/workoutController.js'
 
 // GET all workouts
@@ -18,10 +18,10 @@ router.get('/:id', getWorkout)
 // POST a new workout
 router.post('/', createWorkout)
 
-// DELETE a workout
-router.delete('/:id', deleteWorkout)
+// // DELETE a workout
+// router.delete('/:id', deleteWorkout)
 
-// UPDATE workout
-router.patch('/:id', updateWorkout)
+// // UPDATE workout
+// router.patch('/:id', updateWorkout)
 
 export default router

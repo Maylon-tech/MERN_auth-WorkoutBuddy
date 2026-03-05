@@ -1,8 +1,6 @@
 import Workout from '../models/workoutModel.js'
 import mongoose from 'mongoose'
 
-
-
 // Get all Workouts
 
 export const getWorkouts = async (req, res) => {
@@ -40,14 +38,14 @@ export const createWorkout = async (req, res) => {
             error: 'Please fill in all the fields', emptyFields
         })
     }
+    // Try doc to DB
+    try {
+        const workout = await Workout.create({ title, load, reps })
+        res.status(200).json(workout)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
 
-// Try doc to DB
-try {
-    const workout = await Workout.create({ title, load, reps })
-    res.status(200).json(workout)
-} catch (error) {
-    res.status(400).json({ error: error.message })
-}
 
 // Delete a workout
