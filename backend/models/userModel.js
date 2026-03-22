@@ -16,6 +16,17 @@ const userSchema = new mongoose.Schema({
     },
 })
 
+// static signup method
+userSchema.statics.signup = async (email, password) => {
+
+    const exits = await User.findOne({ email })
+    if (exists) {
+        throw new Error("Email already in use....")
+    }
+}
+
+
+
 const User = mongoose.model("User", userSchema)
 
 export default User
