@@ -1,19 +1,25 @@
 import User from "../models/userModel.js"
 
+export const getUser = async (req, res) => {
 
+    res.json({ message: "Getting the user profile Data."})
+
+}
 
 // LOGIN CONTROLLER
 
-export const loginUser = async (req, res) => {
-    res.json({ msg: "Login request DONE.." })
+export const login = async (req, res) => {
+    res.json({ message: "SignIn into User Profile" })
 
-    res.send("Login request DONE..")
 }
-
-
 
 // SIGNUP CONTROLLER
 
-export const signupUser = async (req, res) => {
-    res.json({ msg: "Signup into system.." })
+export const register = async (req, res) => {
+    const { name, email, password } = req.body
+
+    
+
+
+    res.json({ message: "Create New Account." })
 }

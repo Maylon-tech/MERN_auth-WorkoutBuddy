@@ -23,6 +23,8 @@ export const getWorkout = async (req, res) => {
     if (!workout) {
         return res.status(404).json({ error: 'No Such Workout '})
     }
+
+    res.status(200).json(workout)
 }
 
 export const createWorkout = async (req, res) => {
