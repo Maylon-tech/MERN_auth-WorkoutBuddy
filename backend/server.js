@@ -1,14 +1,14 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import connectDB from './config/db.js'
 
 import workoutRoutes from './routes/workouts.js'
 import userRoutes from './routes/userRoutes.js'
 
 const app = express()
 dotenv.config()
+connectDB()
 
-// Middelware
 app.use(express.json())
 
 app.use((req, res, next) => {
@@ -20,14 +20,3 @@ app.use((req, res, next) => {
 app.use("/api/workouts", workoutRoutes)
 app.use("/api/user", userRoutes)
 
-// Connect to DB
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        //listen for requests
-        app.listen(process.env.PORT, () => {
-            console.log('connected to db & listening on port', process.env.PORT)
-        })
-    })
-    .catch((error) => {
-        console.log("cannot do connection with DB.", error)
-    })
