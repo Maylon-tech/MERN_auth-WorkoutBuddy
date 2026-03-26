@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { WorkoutsContextProvider } from './contexts/WorkoutContext'
-
+import { AuthContextProvider } from './contexts/AuthContext'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <WorkoutsContextProvider>
-      <App />
-    </WorkoutsContextProvider>
+    <AuthContextProvider>
+      <WorkoutsContextProvider>
+        <App />
+      </WorkoutsContextProvider>
+    </AuthContextProvider>
   </StrictMode>,
 )

@@ -5,11 +5,11 @@ import connectDB from './config/db.js'
 import workoutRoutes from './routes/workouts.js'
 import userRoutes from './routes/userRoutes.js'
 
-const app = express()
 dotenv.config()
+const app = express()
+app.use(express.json())
 connectDB()
 
-app.use(express.json())
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -17,6 +17,9 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use("/api/workouts", workoutRoutes)
 app.use("/api/user", userRoutes)
+app.use("/api/workouts", workoutRoutes)
 
+const PORT  = process.env.PORT || 4000
+
+app.listen(PORT, () => console.log("Serveris running now...!!"))
