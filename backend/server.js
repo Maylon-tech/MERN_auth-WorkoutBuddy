@@ -22,4 +22,4 @@ app.use("/api/workouts", workoutRoutes)
 
 const PORT  = process.env.PORT || 4000
 
-app.listen(PORT, () => console.log("Serveris running now...!!"))
+app.listen(PORT, () => console.log("Server is running now...!!"))
