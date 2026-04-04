@@ -7,7 +7,10 @@ const createToken = (_id) => {
 }
 
 export const getUser = async (req, res) => {
-    res.json({ message: "Getting the user profile Data."})
+    const user = await User.find()
+
+
+    res.json({user,  message: "User Model found successfully."})
 }
 
 // LOGIN CONTROLLER
@@ -31,7 +34,13 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
     const { name, email, password } = req.body
 
-    res.json({ message: "Create New Account." })
+    const newUser = await User.create({
+        name,
+        email,
+        password
+    })
+
+    res.json({newUser,  message: "Create New Account already." })
 }
 
 // signup user

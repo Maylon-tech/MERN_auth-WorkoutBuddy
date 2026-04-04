@@ -18,17 +18,18 @@ export const useLogin = () => {
         })
 
         const json = await response.json()
+        const data = json ? JSON.parse(json) : null
 
         if (!response.ok) {
             setIsLoading(false)
-            setError(json.error)
+            setError(data.error)
         }
         if (response.ok) {
             // save to local store
-            localStorage.setItem('user', JSON.stringify(json))
+            localStorage.setItem('user', JSON.stringify(data))
 
             // Update the auth context
-            dispatch({ type: 'LOGIN', payload: json  })
+            dispatch({ type: 'LOGIN', payload: data  })
 
             setIsLoading(false)
         }
